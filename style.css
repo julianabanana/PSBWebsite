@@ -116,21 +116,36 @@ nav {
 .service-card h4 { font-size: 1.2rem; margin-bottom: 15px; color: var(--primary-dark); }
 .service-card p { font-size: 0.95rem; }
 
-/* --- Projects --- */
+/* --- Projects (MODIFIED SECTION) --- */
 .projects { background: var(--white); }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .project-card {
-    height: 400px; background-size: cover; background-position: center;
+    height: 500px; /* Increased height to make images larger */
+    background-size: cover; background-position: center;
     border-radius: var(--radius); overflow: hidden; position: relative;
-    transition: transform 0.3s ease;
+    transition: all 0.4s ease; /* Smoother transition for all properties */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Added initial soft shadow */
 }
-.project-card:hover { transform: scale(1.02); }
+.project-card:hover { 
+    transform: scale(1.05); /* Increased pop effect */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* larger shadow on hover */
+}
 .card-overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    /* Made the gradient much lighter so images are brighter */
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
     display: flex; align-items: flex-end; padding: 30px;
+    transition: background 0.3s ease;
 }
-.card-overlay h4 { color: white; font-size: 1.3rem; margin: 0; }
+/* Optional: Make overlay slightly darker on hover for contrast with text */
+.project-card:hover .card-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+}
+.card-overlay h4 { 
+    color: white; font-size: 1.5rem; margin: 0; font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Text shadow for better readability */
+}
+
 
 /* --- Contact Section --- */
 .contact { background: #000; color: white; }
@@ -145,25 +160,23 @@ nav {
 .contact-info h2 { color: #ffffff; } 
 
 .contact-details { margin-top: 40px; display: flex; flex-direction: column; gap: 30px; }
-.contact-item { display: flex; align-items: center; gap: 20px; }
-.contact-item svg { width: 28px; height: 28px; color: var(--accent); }
+.contact-item { display: flex; align-items: flex-start; gap: 20px; } /* Aligned to top for multi-line address */
+.contact-item svg { width: 28px; height: 28px; color: var(--accent); flex-shrink: 0; margin-top: 5px; }
 
 .contact-item strong { color: #cccccc; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
-.contact-item p { font-size: 1.4rem; font-weight: 600; margin-top: 5px; color: white; }
+.contact-item p { font-size: 1.2rem; font-weight: 500; margin-top: 5px; color: white; line-height: 1.4; }
 .contact-item a { color: white; text-decoration: none; transition: color 0.2s; }
 .contact-item a:hover { color: var(--accent); }
 
-/* === MODIFICATION LOCATION: Footer Logo Styling === */
+/* Footer Logo Styling */
 .footer-logo {
-    margin-top: 50px; /* Spacing from the email */
+    margin-top: 50px; 
     opacity: 0.9;
 }
 .footer-logo img {
-    max-width: 180px; /* Restrict width so it doesn't look huge */
+    max-width: 180px; 
     height: auto;
 }
-/* ================================================== */
-
 
 /* --- Responsive --- */
 @media (max-width: 900px) {
@@ -172,9 +185,11 @@ nav {
     .hero-content { justify-content: center; text-align: center; padding: 0; }
     .hero h1 { text-align: center; }
     .contact-info { padding: 40px; }
+    .project-card { height: 400px; } /* Slightly smaller on tablets */
 }
 
 @media (max-width: 600px) {
     .grid-4 { grid-template-columns: 1fr; }
     .icon-grid { grid-template-columns: 1fr; }
+    .project-card { height: 350px; } /* Smaller on mobile */
 }
